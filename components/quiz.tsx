@@ -40,6 +40,11 @@ function Quiz(props: { topic: string; class: string }) {
         const prompt = `Create 5 multiple-choice questions about ${props.topic} for a ${props.class} grader. Each question should have 4 options and one correct answer. Return the questions in JSON format with fields 'question', 'options', and 'correctAnswer'.`;
 
         const text = await generateContent(prompt, "gemini-2.5-flash");
+        if (!text) {
+          console.error("No text returned from generateContent");
+          setQuestions([]);
+          return;
+        }
 
         // Clean and parse
         const cleanedText = text.replace(/```json|```/g, "").trim();

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { generateContent } from "./gemini_config";
@@ -16,6 +16,7 @@ export default function Flashcard({ topic, class: gradeLevel }: { topic: string;
   const [loading, setLoading] = useState(true);
   const [slides, setSlides] = useState<Slide[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
 
   useEffect(() => {
     const fetchSlides = async () => {
@@ -23,6 +24,11 @@ export default function Flashcard({ topic, class: gradeLevel }: { topic: string;
       try {
         const prompt = `Create 10 informative slides about ${topic} for a ${gradeLevel} grader in JSON array format: [{ "Topic": "...", "explanation": "..." }]`;
         const text = await generateContent(prompt, "gemini-2.5-flash");
+        if (!text) {
+          console.error("No text returned from generateContent");
+          setSlides([]);
+          return;
+        }
 
         const cleanedText = text.replace(/```json|```/g, "").trim();
         const jsonData: Slide[] = JSON.parse(cleanedText);
@@ -36,6 +42,21 @@ export default function Flashcard({ topic, class: gradeLevel }: { topic: string;
     };
     fetchSlides();
   }, [topic, gradeLevel]);
+
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    const handleSelect = () => {
+      setCurrentIndex(carouselApi.selectedScrollSnap());
+    };
+
+    handleSelect();
+    carouselApi.on("select", handleSelect);
+
+    return () => {
+      carouselApi.off("select", handleSelect);
+    };
+  }, [carouselApi]);
 
   const progress = slides.length ? ((currentIndex + 1) / slides.length) * 100 : 0;
 
@@ -66,7 +87,7 @@ export default function Flashcard({ topic, class: gradeLevel }: { topic: string;
         <Carousel
           opts={{ align: "start" }}
           className="w-full max-w-3xl mb-20 relative"
-          onSlideChange={(index) => setCurrentIndex(index)}
+          setApi={setCarouselApi}
         >
           <CarouselContent className="space-x-4">
             {slides.map((slide, i) => (
