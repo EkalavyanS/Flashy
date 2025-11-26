@@ -1,37 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flashy Learning – AI-Powered Flashcards & Quiz App
 
-## Getting Started
+## 🚀 Overview
+**Flashy Learning** is an interactive web application that helps students learn any topic in a fun, engaging, and effective way. Using **Google Gemini AI**, the app generates **customized flashcards and quizzes** based on the topic and grade level. This allows students to **understand concepts quickly**, **reinforce learning**, and **track their progress** with visual feedback.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎯 Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. **AI-Generated Flashcards**
+- Generates **informative slides** on any topic for any grade level.
+- Each slide contains a **topic title** and a **child-friendly explanation**.
+- Uses **smooth carousel UI** with **progress tracking** and **beautiful visual gradients**.
+- Loading state handled by **skeleton placeholders** for seamless UX.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. **Interactive Quiz**
+- Generates **multiple-choice quizzes** with **4 options per question** and clear **correct answers**.
+- Provides **instant feedback** with color-coded responses:
+  - ✅ Correct answers in green  
+  - ❌ Incorrect answers in red  
+- Tracks **score and completion percentage**, triggering **confetti animation** for perfect scores.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. **Intelligent AI Integration**
+- Powered by **Google Gemini 2.5** for natural, accurate, and tailored content.
+- No hardcoded questions – **dynamic content** generated on the fly for **any subject**.
 
-## Learn More
+### 4. **User-Friendly Design**
+- **Responsive UI** using React and Tailwind CSS.
+- Elegant **cards, gradients, and carousel navigation**.
+- Loading skeletons ensure smooth user experience.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚡ Technology Stack
+- **Frontend:** React, Next.js, Tailwind CSS  
+- **AI Integration:** Google Gemini AI  
+- **UI Components:** Shadcn/ui Card & Carousel  
+- **Animation:** React-Confetti, Skeleton Loader  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📸 Demo Screenshots
+*(Insert screenshots of your flashcards and quiz UI here for maximum wow factor)*  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Flashy
+## 🧩 How It Works
+1. **Student selects a topic and grade level**.  
+2. The app **calls Gemini AI** to generate **custom flashcards**.  
+3. **Flashcards are displayed** in a sleek, interactive carousel with progress tracking.  
+4. Once ready, students can **take a quiz** based on the generated content.  
+5. The app **scores answers in real-time** and celebrates perfect scores with **confetti**.  
+
+---
+
+## 🌟 Why This App is Special
+- Fully **dynamic and AI-driven** content.  
+- Encourages **self-paced learning** for students.  
+- Combines **learning and gamification** for enhanced engagement.  
+- **Teacher-friendly**: can easily generate quizzes for any topic or grade without manual effort.  
