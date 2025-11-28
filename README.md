@@ -1,5 +1,5 @@
 # Flashy Learning – AI-Powered Flashcards & Quiz App
-
+AIzaSyAZazcBQkD62sPV151Lj7LHVkkFLjoKycA
 ## 🚀 Overview
 **Flashy Learning** is an interactive web application that helps students learn any topic in a fun, engaging, and effective way. Using **Google Gemini AI**, the app generates **customized flashcards and quizzes** based on the topic and grade level. This allows students to **understand concepts quickly**, **reinforce learning**, and **track their progress** with visual feedback.
 
